@@ -1,5 +1,5 @@
-Installing Envirowindows
-========================
+Installing CHM
+==============
 
 To install CHM Biodiv please refer to `Installing Naaya
 <http://naaya.eaudeweb.ro/docs/installation.html>`_, while using the
