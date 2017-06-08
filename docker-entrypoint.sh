@@ -11,6 +11,8 @@ mkdir -p /var/local/chm/var/naaya-mail-queue/tmp
 chown 500:500 -R /var/local/chm/var/naaya-mail-queue
 
 if [ ! -z "$CRONTAB" ]; then
+  sed -i -e "s/LINKCHECKER_USER/$LINKCHECKER_USER/g" crontab.cfg
+  sed -i -e "s/LINKCHECKER_PASSWORD/$LINKCHECKER_PASSWORD/g" crontab.cfg
   crontab -u zope crontab.cfg
   crond
 fi
