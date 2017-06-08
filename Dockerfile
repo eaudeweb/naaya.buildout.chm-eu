@@ -3,6 +3,8 @@ from eaudeweb/naayaos:16.11.18
 ENV ZOPE_HOME /var/local/chm
 WORKDIR $ZOPE_HOME
 
+RUN yum -y updateinfo && yum -y install lynx && yum clean all
+
 COPY bootstrap.py $ZOPE_HOME/
 COPY buildout.cfg $ZOPE_HOME/
 COPY versions.cfg $ZOPE_HOME/
