@@ -1,4 +1,4 @@
-from eaudeweb/naayaos:16.11.18
+from eaudeweb/naayaos:17.10.30-py27
 
 ENV ZOPE_HOME /var/local/chm
 WORKDIR $ZOPE_HOME
@@ -10,7 +10,10 @@ COPY zope-2.12.28-versions.cfg $ZOPE_HOME/
 COPY crontab.cfg $ZOPE_HOME/
 COPY docker-entrypoint.sh /
 
-RUN /var/local/python/python26/bin/python ./bootstrap.py --version=1.4.4 \
+RUN wget https://bootstrap.pypa.io/get-pip.py \
+ && python2.7 ./get-pip.py setuptools==7.0 \
+ && rm -r ./get-pip.py \
+ && python2.7 ./bootstrap.py --version=1.4.4 \
  && bin/buildout \
  && mkdir -p $ZOPE_HOME/var/log \
  && touch $ZOPE_HOME/var/log/instance.log \
